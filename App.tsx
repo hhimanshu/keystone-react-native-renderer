@@ -1,5 +1,7 @@
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {DocumentRenderer} from '@keystone-6/document-renderer';
+import {renderers} from "./Renderers";
 
 const json = require('./data.json')
 const document = json['data']['slides'][0]['content']['document']
@@ -7,7 +9,7 @@ const document = json['data']['slides'][0]['content']['document']
 export default function App() {
     return (
         <View style={styles.container}>
-            <Text>{JSON.stringify(document)}</Text>
+            <DocumentRenderer document={document} renderers={renderers} />
             <StatusBar style="dark"/>
         </View>
     );
@@ -19,6 +21,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         padding: '16px'
-        // justifyContent: 'center',
     },
 });
