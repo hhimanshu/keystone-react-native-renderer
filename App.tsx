@@ -10,7 +10,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <DocumentRenderer document={document} renderers={renderers} />
-            <StatusBar style="dark"/>
+            <StatusBar style="auto"/>
         </View>
     );
 }
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        padding: '16px'
+        justifyContent: 'center'
     },
 });
