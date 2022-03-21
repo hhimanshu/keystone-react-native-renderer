@@ -1,0 +1,56 @@
+{
+  "data": {
+    "slides": [
+      {
+        "sequence": 3,
+        "plan": {
+          "name": "Deep Work",
+          "author": {
+            "name": "Cal Newport"
+          }
+        },
+        "section": {
+          "name": "Deep Work Is Rare"
+        },
+        "content": {
+          "document": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "S2-3"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "children": [
+                {
+                  "text": "Brightspot "
+                },
+                {
+                  "text": "Top",
+                  "bold": true,
+                  "italic": true,
+                  "underline": true
+                },
+                {
+                  "text": " Header!"
+                }
+              ],
+              "level": 1
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
