@@ -1,25 +1,32 @@
-import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, View} from 'react-native';
-import {DocumentRenderer} from '@keystone-6/document-renderer';
-import {renderers} from "./Renderers";
+import React, {useEffect, useState} from 'react';
+import {AppRegistry} from 'react-native';
+import {ApolloProvider} from '@apollo/client';
+import {client, getPlanData} from "./db";
+import Slide from "./Slide";
 
-const json = require('./data.json')
-const document = json['data']['slides'][0]['content']['document']
+const App = () => {
+    const [slides, setSlides] = useState([])
+    useEffect(() => {
+        getPlanData().then(d => {
+            const plans = d.data.plans
+            //console.log(plans)
 
-export default function App() {
-    return (
-        <View style={styles.container}>
-            <DocumentRenderer document={document} renderers={renderers} />
-            <StatusBar style="auto"/>
-        </View>
-    );
-}
+            const sections = plans.map(plan => plan.sections).flat()
+            //console.log(sections)
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-});
+            const slides = sections.map(section => section.slides).flat()
+            //console.log(slides)
+            setSlides(slides)
+        })
+    }, [slides])
+
+    return <ApolloProvider client={client}>
+        {slides && slides.map((slide, idx) => {
+            return <Slide key={idx} sequence={slide.sequence} document={slide.content.document}/>
+        })}
+    </ApolloProvider>
+};
+
+AppRegistry.registerComponent('MyApplication', () => App);
+
+export default App;
